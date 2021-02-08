@@ -11,5 +11,6 @@ namespace Adelanka.DAL
         }
 
         public DbSet<SystemUser> SystemUser { get; set; }
+        public DbSet<UserNote> UserNote { get; set; }
     }
 }

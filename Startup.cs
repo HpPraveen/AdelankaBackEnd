@@ -39,6 +39,7 @@ namespace Adelanka
             services.AddDbContext<AdelankaDBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("AdelankaDBConnection")));
 
             services.AddTransient<IGenericRepository<SystemUser>, GenericRepository<SystemUser>>();
+            services.AddTransient<IGenericRepository<UserNote>, GenericRepository<UserNote>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -40,6 +40,25 @@ namespace Adelanka.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("UserNoteDetailsByUser/{userName}")]
+        public IActionResult GetUserNoteDetailsByUser(string userName)
+        {
+            _logger.InfoFormat("Request with verb [{0}] and Uri [{1}] executed", Request.Method, Request.Path);
+            _logger.InfoFormat("Action GetUserNoteDetailsByUser started");
+            try
+            {
+                var userDetailList = _userNoteRepository.Get(e => e.Username == userName).ToList();
+                _logger.InfoFormat("Action GetUserNoteDetailsByUser completed");
+                return Ok(userDetailList);
+            }
+            catch (Exception ex)
+            {
+                _logger.InfoFormat("Action GetUserNoteDetailsByUser Failed");
+                return new JsonResult(ex);
+            }
+        }
+
         [HttpPost]
         [Route("NewUserNoteDetails")]
         public IActionResult AddUserNoteDetails([FromBody] UserNote userNote)
